@@ -618,6 +618,10 @@ export class Server extends events.EventEmitter {
         res.setHeader('Server', 'reichat-server/' + pkg.version);
         res.setHeader('X-Content-Type-Options', 'nosniff');
 
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+        res.setHeader('Access-Control-Allow-Credentials', 'true');
+
         if (req.method !== 'GET' && req.method !== 'HEAD') {
             if (req.method === 'OPTIONS') {
                 res.writeHead(200, {
